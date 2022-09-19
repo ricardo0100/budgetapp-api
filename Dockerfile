@@ -1,0 +1,21 @@
+# Grab the Alpine Linux image
+FROM node:18-alpine3.16
+
+# Install npm and nodemon
+RUN npm install -g npm
+RUN npm install -g nodemon
+
+# Install packages with npm
+WORKDIR /app
+COPY package*.json .
+RUN npm install
+
+# Copy source code to container
+COPY . .
+
+# Run the image as a non-root user
+RUN adduser -D myuser
+USER myuser
+
+# Run development script
+CMD ["npm", "run", "dev"]
