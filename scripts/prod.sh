@@ -1,4 +1,3 @@
 #!/bin/sh
 
-echo "$PWD"
-node ../src/server.js
+node /src/server.js
