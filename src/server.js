@@ -21,7 +21,7 @@ app.use(logger);
 // Item.sync()
 
 app.get('/', (req, res) => {
-  res.send('Hiii!')
+  res.send('Hi!')
 })
 
 // app.use(express.json())
