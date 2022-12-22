@@ -3,7 +3,6 @@ FROM node:18-alpine3.16
 
 # Install npm and nodemon
 RUN npm install -g npm
-RUN npm install -g nodemon
 
 # Install packages with npm
 WORKDIR /app
