@@ -8,3 +8,20 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0.31
+    restart: always
+    ports: 
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=budgetapp
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql

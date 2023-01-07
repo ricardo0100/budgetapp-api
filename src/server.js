@@ -1,15 +1,13 @@
 'use strict';
-
 console.log("STARTING BUDGET API");
 
 const express = require('express');
 const { DataTypes } = require('sequelize');
 const cors = require('./middlewares/cors.middleware');
 const logger = require('./middlewares/logger.middleware');
-// const sequelize = require('./services/db.service')
+const sequelize = require('./services/db.service')
 
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 // Register middlewares
@@ -17,11 +15,12 @@ app.use(cors);
 app.use(logger);
 
 // Sync model
-// const Item = require('./models/item.model')(sequelize, DataTypes)
-// Item.sync()
+const Item = require('./models/item.model')(sequelize, DataTypes)
+Item.sync()
 
 app.get('/', (req, res) => {
-  res.send('Hi!')
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ a: 3 }, null, 3));
 })
 
 // app.use(express.json())

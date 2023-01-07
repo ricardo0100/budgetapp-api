@@ -1,9 +1,12 @@
-# ⚠️ This Dockerfile used for local developlent only ⚠️
-# It runs nodemon instead of production node
-
-
 # Grab the Alpine Linux image
-FROM node:18-alpine3.16 AS API
+FROM node:18-alpine3.16
+
+# Set Env Vars
+ENV DB_HOST=mysql
+ENV DB_USER=root
+ENV DB_PASSWORD=1234
+ENV DB_NAME=budgetapp
+ENV DB_PORT=3306
 
 # Install npm and nodemon
 RUN npm install -g npm
