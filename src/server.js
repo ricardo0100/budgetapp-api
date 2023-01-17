@@ -18,9 +18,14 @@ app.use(logger);
 const Item = require('./models/item.model')(sequelize, DataTypes)
 Item.sync()
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  res.send('Hi')
+})
+
+app.get('/get-items', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({ a: 3 }, null, 3));
+  const items = await Item.findAll()
+  res.end(JSON.stringify(items));
 })
 
 // app.use(express.json())
