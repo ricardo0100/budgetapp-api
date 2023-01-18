@@ -19,7 +19,7 @@ const Item = require('./models/item.model')(sequelize, DataTypes)
 Item.sync()
 
 app.get('/', async (req, res) => {
-  res.send('Hi')
+  res.send('Home 💰')
 })
 
 app.get('/get-items', async (req, res) => {
